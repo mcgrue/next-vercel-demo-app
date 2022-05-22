@@ -3,5 +3,8 @@
 		"activityBar.background": "#3f0707",
 		"titleBar.activeBackground": "#580a0a",
 		"titleBar.activeForeground": "#FEFAF3"
-	}
+	},
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }
