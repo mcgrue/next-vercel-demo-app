@@ -31,3 +31,23 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.formattedQuote {
+  font-family: monospace;
+}
+
+.speakerCell,
+.quoteCell {
+  vertical-align: top;
+}
+
+.speakerCell {
+  text-align: right;
+  color: darkgray;
+}
+
+.quoteCell {
+  padding-left: 1em;
+  text-align: left;
+  color: gray;
+}

@@ -7,14 +7,14 @@ import React, { useEffect, useState } from "react";
 
 import { Quote } from "../lib/pingpawn_api";
 
-interface QuoteBylineProps {
+interface QuoteTakerProps {
   quote: Quote;
 }
 
-const QuoteByline: React.FC<QuoteBylineProps> = (props: QuoteBylineProps) => {
+const QuoteByline: React.FC<QuoteTakerProps> = (props: QuoteTakerProps) => {
   const q = props.quote;
   return (
-    <div className="text-gray-500 text-sm">
+    <div className="text-gray-400 text-sm">
       &nbsp;by&nbsp;
       <Link href={`/users/${q.author_fk}`}>{q.author_display_name}</Link>
       &nbsp;in&nbsp;
@@ -23,11 +23,7 @@ const QuoteByline: React.FC<QuoteBylineProps> = (props: QuoteBylineProps) => {
   );
 };
 
-interface MiniQuoteProps {
-  quote: Quote;
-}
-
-const MiniQuote: React.FC<MiniQuoteProps> = (props: MiniQuoteProps) => {
+const MiniQuote: React.FC<QuoteTakerProps> = (props: QuoteTakerProps) => {
   const q = props.quote;
 
   return (
@@ -37,10 +33,58 @@ const MiniQuote: React.FC<MiniQuoteProps> = (props: MiniQuoteProps) => {
       </Link>
       <QuoteByline quote={q} />
       <br />
-      <pre className="text-gray-800 text-base">
-        {q.formatted_quote ? q.formatted_quote : q.unformatted_quote}
-      </pre>
+      <FormattedQuote quote={q} />
     </li>
+  );
+};
+
+const FormattedQuote: React.FC<QuoteTakerProps> = (props: QuoteTakerProps) => {
+  const q = props.quote;
+
+  interface QuoteLine {
+    speaker: string;
+    line: string;
+  }
+
+  const lines: QuoteLine[] = [];
+
+  if (q.formatted_quote) {
+    const tmpLines = q.formatted_quote.split("\n");
+    tmpLines.forEach((line) => {
+      line = line.trim();
+      const firstSpaceIndex = line.indexOf(" ");
+      lines.push({
+        speaker: line.substring(0, firstSpaceIndex),
+        line: line.substring(firstSpaceIndex + 1),
+      });
+    });
+  } // try your best, computer!
+  else {
+    lines.push({
+      speaker: "<butts>",
+      line: "lol",
+    });
+    lines.push({
+      speaker: "<lol>",
+      line: "butts",
+    });
+  }
+
+  return (
+    <table className="formattedQuote">
+      <th>
+        <td></td>
+        <td></td>
+      </th>
+      {lines.map((l) => {
+        return (
+          <tr>
+            <td className="speakerCell">{l.speaker}</td>
+            <td className="quoteCell">{l.line}</td>
+          </tr>
+        );
+      })}
+    </table>
   );
 };
 
