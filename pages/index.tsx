@@ -76,9 +76,10 @@ const FormattedQuote: React.FC<QuoteTakerProps> = (props: QuoteTakerProps) => {
         <td></td>
         <td></td>
       </th>
-      {lines.map((l) => {
+      {lines.map(function (l, i) {
+        const myLineKey = "line" + q.quote_id + "-" + i;
         return (
-          <tr>
+          <tr key={myLineKey}>
             <td className="speakerCell">{l.speaker}</td>
             <td className="quoteCell">{l.line}</td>
           </tr>
@@ -115,7 +116,7 @@ export default function Home({ allPostsData }) {
         <h2 className={utilStyles.headingLg}>Most Recent Quotes</h2>
         <ul className={utilStyles.list}>
           {data.map((q) => {
-            return <MiniQuote quote={q} />;
+            return <MiniQuote key={"miniquote-" + q.quote_id} quote={q} />;
           })}
         </ul>
       </section>
