@@ -16,11 +16,14 @@ export default function Home() {
       .then((data) => {
         setData(data);
         setLoading(false);
+      })
+      .catch((e) => {
+        debugger;
       });
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  if (!data || !data.map) return <p>No profile data</p>;
 
   return (
     <Layout home>
