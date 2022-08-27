@@ -1,32 +1,35 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
-import Link from "next/link";
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from './layout.module.css';
+import utilStyles from '../styles/utils.module.css';
+import Link from 'next/link';
 
-export const siteTitle = "Ping Pawn: Social Quotes";
-export const siteDescription = "Like Bash.org, but made by somebody else!";
+export const siteTitle = 'Ping Pawn: Social Quotes';
+export const siteDescription = 'Like Bash.org, but made by somebody else!';
 
 interface PingpawnHeaderProps {
   myValue?: boolean;
 }
 
 const PingpawnHeader: React.FC<PingpawnHeaderProps> = (
-  props: PingpawnHeaderProps
+  props: PingpawnHeaderProps,
 ) => {
-  const name = "Pingpawn";
+  const name = 'Pingpawn';
 
   return (
     <>
       <header>
         <h1 className="text-3xl font-bold underline">{name}</h1>
+        <a href="https://api.pingpawn.com/a/login" target="_new">
+          Login
+        </a>
       </header>
     </>
   );
 };
 
 function PingpawnFooter(): JSX.Element {
-  const name = "Pingpawn";
+  const name = 'Pingpawn';
 
   return (
     <>
