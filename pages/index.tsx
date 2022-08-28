@@ -9,18 +9,7 @@ export default function Home({data}) {
   const [_data, setData] = useState(data);
   const [isLoading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   fetch("api/get-main-page")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data);
-  //       setLoading(false);
-  //     });
-  // }, []);
-
-  // if (isLoading) return <p>Loading...</p>;
-  // if (!_data || !_data.map) return <p>No profile data</p>;
+  return <h1>HIES</h1>;
 
   console.log('whats going on');
 
