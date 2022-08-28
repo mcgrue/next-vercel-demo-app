@@ -11,6 +11,15 @@ interface PingpawnHeaderProps {
   myValue?: boolean;
 }
 
+function foo() {
+  fetch('https://api.pingpawn.com/a/login/', {
+    method: 'GET',
+    credentials: 'include',
+  }).then(() => {
+    alert('hi');
+  });
+}
+
 const PingpawnHeader: React.FC<PingpawnHeaderProps> = (
   props: PingpawnHeaderProps,
 ) => {
@@ -20,9 +29,7 @@ const PingpawnHeader: React.FC<PingpawnHeaderProps> = (
     <>
       <header>
         <h1 className="text-3xl font-bold underline">{name}</h1>
-        <a href="https://api.pingpawn.com/a/login" target="_new">
-          Login
-        </a>
+        <button onClick={foo}>Login</button>
       </header>
     </>
   );

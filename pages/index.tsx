@@ -48,8 +48,10 @@ export default function Home({data}) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
 
-  const res = await fetch('https://api.pingpawn.com/quotes/recent');
-  const data = await res.json();
+  //const res = await fetch('https://api.pingpawn.com/quotes/recent');
+  //const data = await res.json();
+
+  const data = {};
 
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
