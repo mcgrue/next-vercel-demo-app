@@ -1,14 +1,16 @@
 // import { NextApiRequest, NextApiResponse } from "next";
 
-import { PingPawnFetch } from "../../lib/pingpawn_api";
+import {PingPawnFetch} from '../../lib/pingpawn_api';
 
 export default async function handler(req, res) {
+  return {};
+
   try {
     const result = await PingPawnFetch(
-      "https://api.pingpawn.com/quotes/recent",
-      res
+      'https://api.pingpawn.com/quotes/recent',
+      res,
     );
   } catch (err) {
-    res.status(500).json({ error: "failed to load data" });
+    res.status(500).json({error: 'failed to load data'});
   }
 }
